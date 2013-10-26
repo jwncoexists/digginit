@@ -1,0 +1,25 @@
+# SQLite version 3.x
+#   gem install sqlite3
+#
+#   Ensure the SQLite 3 gem is defined in your Gemfile
+#   gem 'sqlite3'
+development:   
+  adapter: postgresql   
+  encoding: unicode   
+  database: digginit_development   
+  username: vagrant   
+  template: template0  
+
+test:   
+  adapter: postgresql   
+  encoding: unicode   
+  database: digginit_test   
+  username: vagrant   
+  template: template0 
+
+production:   
+  adapter: postgresql   
+  encoding: unicode   
+  database: digginit_production  
+  username: vagrant   
+  template: template0 
