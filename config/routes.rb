@@ -3,7 +3,6 @@ Digginit::Application.routes.draw do
 
   root to: 'welcome#index'
   match "about" => 'welcome#about', via: :get 
-  resources :users, only: [:create, :destroy, :show]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
