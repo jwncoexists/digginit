@@ -16,4 +16,4 @@
 /tmp
 
 # ignore sendgrid mail setup
-config/initializers/setup_mail.rb 
+config/initializers/setup_mail.rb
