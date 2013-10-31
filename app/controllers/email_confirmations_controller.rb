@@ -1,0 +1,3 @@
+class EmailConfirmationsController < ApplicationController
+  
+end

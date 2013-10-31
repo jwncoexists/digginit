@@ -17,8 +17,7 @@ Setup
   - heroku config:get SENDGRID_USERNAME
   - heroku config:get SENDGRID_PASSWORD
 
-4. Copy config/initializers/setup_mail.tmp.rb setup_mail.rb
-5. Copy the SENDGRID user name & password into the appropriate location in setup_mail.rb
+3. To configure your SendGrid user name/password, copy the "config/application.example.yml" file, and remove "example" from the name, then specify your configurations in this file. Your application.yml should contain your sensitive credentials. It should be included in .gitnore as well.
 
 
 Usage

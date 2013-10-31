@@ -1,5 +1,6 @@
 Digginit::Application.routes.draw do
   resources :users
+  resources :email_confirmations
 
   root to: 'welcome#index'
   match "about" => 'welcome#about', via: :get 

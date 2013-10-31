@@ -28,8 +28,8 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to root_url, notice: "User #{@user.name} was successfully created." }
-        format.json { render action: 'show', status: :created, location: @user }
+        @user.token = SecureRandom.hex(6)
+        RegistrationMailer.registration_confirmation(@user, new_email_confirmation_url(token: @user.token)).deliver
       else
         format.html { render action: 'new' }
         format.json { render json: @user.errors, status: :unprocessable_entity }

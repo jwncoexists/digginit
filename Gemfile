@@ -16,7 +16,7 @@ group :assets do
   gem 'skeleton-rails'
 end
   
-
+gem 'figaro'
 # Use CoffeeScript for .js.coffee assets and views
 
 

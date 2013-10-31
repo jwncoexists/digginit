@@ -1,8 +1,9 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :password_digest, :name, 
-  validates :name, presence: true, uniqueness: true
-  before_create :set_member
+
+
   has_secure_password
+
+  before_create :set_member
 
   ROLES = %w[member premium admin]
   def role?(base_role)

@@ -15,5 +15,5 @@
 /log/*.log
 /tmp
 
-# ignore sendgrid mail setup
-config/initializers/setup_mail.rb
+# Ignore application configuration
+/config/application.yml
