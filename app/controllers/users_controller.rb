@@ -28,7 +28,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        @user.token = SecureRandom.hex(6)
+        @user.update_attribute(:token, SecureRandom.hex(6))
         RegistrationMailer.registration_confirmation(@user, new_email_confirmation_url(token: @user.token)).deliver
       else
         format.html { render action: 'new' }

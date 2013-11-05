@@ -1,1 +1,9 @@
-<%= @message %>
+
+ <%= "Dear #{@user.name}," %>
+ <br>
+ <br>
+ Thank you for registering for digginIt.  Please click the following link to complete your registration:
+ <br>
+ <br>
+ <%= link_to "Confirm digginIt email", @url %>
+
