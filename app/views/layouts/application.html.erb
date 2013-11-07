@@ -19,13 +19,14 @@
             <h5 id="menu" style="margin-top: 20px; margin-bottom: 10px;">
               <li><%= link_to "home", root_path %></li>
               <li><%= link_to "about", about_path %></li>
+              <li><%= link_to "sign-in", new_session_path %></li>
             </h5>
           </ul>
         </div>
       </div>
       <% flash_css_class = { :notice => 'notice', :alert => 'alert'} %>
       <% flash.each do |key, msg| %>
-        <div id=<%= flash_css_class[key] %>>
+        <div id=<%= flash_css_class[key] %> class="ten columns omega">
            <%= msg %>
         </div>
        <% end unless flash.nil? %>

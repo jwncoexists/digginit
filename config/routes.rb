@@ -1,6 +1,8 @@
 Digginit::Application.routes.draw do
+
   resources :users
   resources :email_confirmations
+  resources :sessions, only: [:new, :create, :destroy]
 
   root to: 'welcome#index'
   match "about" => 'welcome#about', via: :get 
