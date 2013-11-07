@@ -21,6 +21,14 @@ body {
     border-radius: 200px;
 }
 
+#notice {
+  color: green;
+}
+
+#alert {
+  color: red
+}
+
 .Sign_form{
     text-align: center;
     margin: auto;

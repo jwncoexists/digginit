@@ -23,6 +23,12 @@
           </ul>
         </div>
       </div>
+      <% flash_css_class = { :notice => 'notice', :alert => 'alert'} %>
+      <% flash.each do |key, msg| %>
+        <div id=<%= flash_css_class[key] %>>
+           <%= msg %>
+        </div>
+       <% end unless flash.nil? %>
 
       <%= yield %>
 

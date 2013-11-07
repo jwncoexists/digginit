@@ -1,6 +1,5 @@
 class RegistrationMailer < ActionMailer::Base
   default from: "jenniferwnelson@sbcglobal.net"
-  attr_accessible :url, :user
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
