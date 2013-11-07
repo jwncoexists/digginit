@@ -1,8 +1,16 @@
 Digginit::Application.routes.draw do
 
+  controller :sessions do
+    get 'login' => :new
+    post 'login' => :create
+    delete 'logout' => :destroy
+  end
+
+  get "sessions/create"
+  get "sessions/destroy"
+  
   resources :users
   resources :email_confirmations
-  resources :sessions, only: [:new, :create, :destroy]
 
   root to: 'welcome#index'
   match "about" => 'welcome#about', via: :get 
