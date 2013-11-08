@@ -76,10 +76,12 @@ Digginit::Application.configure do
   # config.autoflush_log = false
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
-  config.log_formatter = ::Logger::Formatter.
+
+  # config.log_formatter = ::Logger::Formatter.
+  
   # http://digginit.herokuapp.com
   config.action_mailer.default_url_options = { :host => 'digginit.herokuapp.com' }  
-  
+
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
     :address        => 'smtp.sendgrid.net',
