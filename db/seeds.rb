@@ -1,7 +1,7 @@
 require 'faker'
 
 w = Wiki.new(title:'digginIt', 
-            description: "The free universal encyclopedia with articles created and edited by users around the world.")
+            description: "The free encyclopedia with articles created and edited by users around the world.")
 w.save
 9.times do
   w = Wiki.new(

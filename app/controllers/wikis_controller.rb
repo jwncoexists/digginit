@@ -13,16 +13,20 @@ class WikisController < ApplicationController
 
   def edit
     @wiki = Wiki.find(params[:id])
+    authorize! :update, @wiki, message: "You need to be an administrator to do that."
   end
 
   def create
     @wiki = Wiki.new(params[:wiki])
+    authorize! :create, @wiki, message: "You need to have a premium account to create a wiki."
     
     # assign user to wiki in wiki_user and set wiki role = admin
-    wiki_user = WikiUser.new( wiki_id: @wiki.id, user_id: current_user.id)
-    if @wiki.save and wiki_user.save
+    authorize! :create, @wiki, message: "You need to be a premium member to create a wiki."
+    if @wiki.save
+      wiki_user = WikiUser.new( wiki_id: @wiki.id, user_id: current_user.id)
       wiki_user.update_attribute(:wiki_role, 'admin')
-      flash[:notice] = "Wiki was saved successfully."
+      wiki_user.save
+      flash[:notice] = "Wiki was created successfully."
       redirect_to @wiki
     else
       flash[:error] = "Error creating wiki. Please try again."
@@ -32,6 +36,7 @@ class WikisController < ApplicationController
 
    def update
      @wiki = Wiki.find(params[:id])
+     authorize! :update, @wiki, message: "You need to be an administrator of the wiki to update it."
      if @wiki.update_attributes(params[:wiki])
        redirect_to @wiki
      else
@@ -40,4 +45,16 @@ class WikisController < ApplicationController
      end
    end
 
+  def destroy
+    @wiki = Wiki.find(params[:id])
+    title = @wiki.title
+    authorize! :destroy, @wiki, message: "You need to be an administrator to delete a wiki."
+    if @wiki.destroy
+      flash[:notice] = "\"#{title}\" was deleted successfully."
+      redirect_to root_path
+    else
+      flash[:error] = "There was an error deleting the wiki."
+      render :show
+    end
+  end
 end
