@@ -1,0 +1,9 @@
+
+<div id="theText" class = "eight columns">
+  <h2>Change Current Wiki</h2>
+  <legend> Select a wiki from the list below: </legend><br>
+  <%= collection_select(:wiki_users, :wiki_id, @wikis, :id, :title, :prompt => false) %><br>
+  <% # don't know how to get the result of this %>
+  <%= link_to "Submit", wiki_path(current_user.cur_wiki), class: 'button' %>
+</div>
+

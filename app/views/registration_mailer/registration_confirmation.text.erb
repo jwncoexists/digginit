@@ -1,14 +1,7 @@
+<%= "Dear #{@user.name}," %>
 
- <!DOCTYPE html>
-<html>
-  <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-  </head>
-  <body>
-    <p><%= "Dear #{@user.name}," %></p><br>
-    <p>
-      Thank you for registering for digginIt.  Please click the following link to complete your registration:
-    </p><br>
-    <p><%= link_to "Confirm your digginIt email address", @url %></p>
-  </body>
-</html>
+Please click the following link to complete your registration with digginIt:
+
+<%= @url %>
+
+Thank you for registering for digginIt.

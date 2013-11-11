@@ -17,6 +17,10 @@ group :assets do
 end
   
 gem 'figaro'
+gem 'foreigner'
+gem 'faker'
+gem 'protected_attributes'
+gem 'cancan'
 # Use CoffeeScript for .js.coffee assets and views
 
 

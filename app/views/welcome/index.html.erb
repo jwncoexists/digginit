@@ -12,19 +12,18 @@
   </blockquote>
 </div>
 
-
-
-<div id="signuptext" class = "fourteen columns offset-by-two columns">
- <h2>find out more:</h2>
-</div>
-
-<div id="SignupButtons" class = "eight columns">
-  <div class="four columns alpha">
-    <%= link_to image_tag(image_path('button-digginit-free.png')), new_user_path %>
+<% if !current_user %>
+  <div id="signuptext" class = "fourteen columns offset-by-two columns">
+    <h2>find out more:</h2>
   </div>
-  <div class="four columns alpha">
-    <%= image_tag image_path('button-digginit-premium.png') %>
+  <div id="SignupButtons" class = "eight columns">
+    <div class="four columns alpha">
+      <%= link_to image_tag(image_path('button-digginit-free.png')), new_user_path %>
+    </div>
+    <div class="four columns alpha">
+      <%= image_tag image_path('button-digginit-premium.png') %>
+    </div>
   </div>
-</div>
+<% end %>
 
 
