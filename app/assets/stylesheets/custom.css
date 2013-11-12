@@ -31,20 +31,44 @@ body {
   color: red
 }
 
-.Sign_form{
-    text-align: center;
-    margin: auto;
-    margin-top: 10px;
-    width: 500px;
-    background-color: rgba(0, 0, 0, .2);
-    padding-bottom: 20px;
-    border-radius: 10px;
-    box-shadow: 5px 5px 5px #755416;
+table {
+        width: 90%;
+        border-collapse: collapse;
 }
 
-.Signup_Erros{
-    list-style-type: none;
-    text-align:left;
-    margin-left: 66px;
-    color:red;
+table th, table td {
+        padding: 10px 10px 9px;
+        font-size: 13px;
+        line-height: 18px;
+        text-align: left;
 }
+
+table td {
+        vertical-align: top;
+        border-top: solid 1px #ddd;
+}
+
+table th {
+        padding-top: 9px;
+        font-weight: bold;
+        vertical-align: middle;
+}
+
+table.condensed th, table.condensed td {
+        padding: 5px 5px 4px;
+}
+
+table.bordered {
+        border-collapse: separate;
+        border: solid 1px #ddd;
+        -webkit-border-radius: 2px;
+        -moz-border-radius: 2px;
+        border-radius: 2px;
+}
+
+table.bordered th + th,
+table.bordered th + td,
+table.bordered td + td {
+        border-left: solid 1px #ddd;
+}
+

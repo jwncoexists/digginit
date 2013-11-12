@@ -38,7 +38,6 @@ class Ability
       can :read, Wiki.visible_to(user) do |w| !w.wiki_users.empty? end
       can :update, Wiki.visible_to(user) do |w| !w.wiki_users.empty? end
     end
- 
     can :read, Wiki, public: true
 
   end

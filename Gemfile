@@ -21,6 +21,7 @@ gem 'foreigner'
 gem 'faker'
 gem 'protected_attributes'
 gem 'cancan'
+gem 'redcarpet'
 # Use CoffeeScript for .js.coffee assets and views
 
 

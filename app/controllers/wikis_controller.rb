@@ -9,6 +9,8 @@ class WikisController < ApplicationController
 
   def show
     @wiki = Wiki.find(params[:id])
+    current_user.cur_wiki = @wiki.id
+    current_user.save
   end
 
   def edit
