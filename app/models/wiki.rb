@@ -4,9 +4,9 @@ class Wiki < ActiveRecord::Base
   validates :title, length: { minimum: 5 }, presence: true
   validates :description, length: { minimum: 20 }, presence: true
 
-  has_many :wiki_users
+  has_many :collaborators
 
-  scope :visible_to, lambda { |user| user.role == 'admin' ? scoped : Wiki.includes(:wiki_users).where("wikis.public = true OR wiki_users.user_id = ?", user.id) }
+  scope :visible_to, lambda { |user| user.role == 'admin' ? scoped : Wiki.includes(:collaborators).where("wikis.public = true OR collaborators.user_id = ?", user.id) }
 
   def digginit_wiki
     Wiki.find_by_title('digginIt')

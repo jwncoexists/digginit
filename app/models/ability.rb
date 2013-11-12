@@ -31,12 +31,12 @@ class Ability
       can :manage, :all
     elsif user.role? :premium
       can :create, Wiki
-      can :read, Wiki.visible_to(user) do |w| !w.wiki_users.empty? end
-      can :update, Wiki.visible_to(user) do |w| !w.wiki_users.empty? end
+      can :read, Wiki.visible_to(user) do |w| !w.collaborators.empty? end
+      can :update, Wiki.visible_to(user) do |w| !w.collaborators.empty? end
     elsif user.role? :member
       can :read, Wiki, public: true
-      can :read, Wiki.visible_to(user) do |w| !w.wiki_users.empty? end
-      can :update, Wiki.visible_to(user) do |w| !w.wiki_users.empty? end
+      can :read, Wiki.visible_to(user) do |w| !w.collaborators.empty? end
+      can :update, Wiki.visible_to(user) do |w| !w.collaborators.empty? end
     end
     can :read, Wiki, public: true
 

@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131111063557) do
+ActiveRecord::Schema.define(version: 20131112201222) do
+
+  create_table "collaborators", force: true do |t|
+    t.integer  "wiki_id"
+    t.integer  "user_id"
+    t.string   "wiki_role"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "collaborators", ["user_id"], name: "index_collaborators_on_user_id", using: :btree
+  add_index "collaborators", ["wiki_id"], name: "index_collaborators_on_wiki_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "name",                               null: false
@@ -28,17 +39,6 @@ ActiveRecord::Schema.define(version: 20131111063557) do
   add_index "users", ["confirmed_at"], name: "index_users_on_confirmed_at", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
 
-  create_table "wiki_users", force: true do |t|
-    t.integer  "wiki_id"
-    t.integer  "user_id"
-    t.string   "wiki_role"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "wiki_users", ["user_id"], name: "index_wiki_users_on_user_id", using: :btree
-  add_index "wiki_users", ["wiki_id"], name: "index_wiki_users_on_wiki_id", using: :btree
-
   create_table "wikis", force: true do |t|
     t.string   "title"
     t.text     "description"
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 20131111063557) do
     t.datetime "updated_at"
   end
 
-  add_foreign_key "wiki_users", "users", name: "wiki_users_user_id_fk", dependent: :delete
-  add_foreign_key "wiki_users", "wikis", name: "wiki_users_wiki_id_fk", dependent: :delete
+  add_foreign_key "collaborators", "users", name: "collaborators_user_id_fk", dependent: :delete
+  add_foreign_key "collaborators", "wikis", name: "collaborators_wiki_id_fk", dependent: :delete
 
 end

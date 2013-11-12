@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
 
   attr_accessible :name, :email, :password, :password_confirmation, :confirmed_at, :role
   has_secure_password
-  has_many :wiki_users
+  has_many :collaborators
   after_create :set_cur_wiki_to_digginit
 
   def set_cur_wiki_to_digginit

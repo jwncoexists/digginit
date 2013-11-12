@@ -22,12 +22,12 @@ class WikisController < ApplicationController
     @wiki = Wiki.new(params[:wiki])
     authorize! :create, @wiki, message: "You need to have a premium account to create a wiki."
     
-    # assign user to wiki in wiki_user and set wiki role = admin
+    # assign user to wiki in collaborator and set wiki role = admin
     authorize! :create, @wiki, message: "You need to be a premium member to create a wiki."
     if @wiki.save
-      wiki_user = WikiUser.new( wiki_id: @wiki.id, user_id: current_user.id)
-      wiki_user.update_attribute(:wiki_role, 'admin')
-      wiki_user.save
+      collaborator = Collaborator.new( wiki_id: @wiki.id, user_id: current_user.id)
+      collaborator.update_attribute(:wiki_role, 'admin')
+      collaborator.save
       flash[:notice] = "Wiki was created successfully."
       redirect_to @wiki
     else
