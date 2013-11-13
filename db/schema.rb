@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131112201222) do
+ActiveRecord::Schema.define(version: 20131113015336) do
 
   create_table "collaborators", force: true do |t|
     t.integer  "wiki_id"
@@ -42,10 +42,13 @@ ActiveRecord::Schema.define(version: 20131112201222) do
   create_table "wikis", force: true do |t|
     t.string   "title"
     t.text     "description"
-    t.boolean  "public",      default: false
+    t.boolean  "public",      default: true
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
+
+  add_index "wikis", ["user_id"], name: "index_wikis_on_user_id", using: :btree
 
   add_foreign_key "collaborators", "users", name: "collaborators_user_id_fk", dependent: :delete
   add_foreign_key "collaborators", "wikis", name: "collaborators_wiki_id_fk", dependent: :delete

@@ -1,4 +1,4 @@
-<h1>new private wiki</h1>
+<h1>create new wiki</h1>
 
 <div class="row">
   <div class="span-6">
@@ -15,6 +15,15 @@
           <%= f.text_area :description, rows: 8 %>
         </div>
       </div>
+      <% if can? :create_private, Wiki %>
+        <div class="control-group">
+          <div class="controls">
+            <%= f.label :private, class: 'checkbox' do %>
+              <%= f.check_box :private, :checked => false %>make this a private wiki<br><br>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
 
       <div class="control-group">
         <div class="controls">
