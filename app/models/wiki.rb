@@ -1,9 +1,9 @@
 class Wiki < ActiveRecord::Base
-  attr_accessible :title, :description, :public, :user_id
+  attr_accessible :title, :body, :public, :user_id
   before_save :update_slug
 
   validates :title, length: { minimum: 5 }, presence: true
-  validates :description, length: { minimum: 20 }, presence: true
+  validates :body, length: { minimum: 20 }, presence: true
 
   has_many :collaborators
 

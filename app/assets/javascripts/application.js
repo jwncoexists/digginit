@@ -16,4 +16,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-
+//= require_tree .
+$(document).ready(function() {
+  $('#js-wikibody').bind('input propertychange', function() {
+    var mdtxt = $(this).value;
+    $('#js-wikimarkdown').value - mdtxt;
+    return false;
+  });
+});
