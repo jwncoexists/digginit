@@ -13,6 +13,6 @@ class Wiki < ActiveRecord::Base
     self.slug = self.title.parameterize
   end
   def to_param
-    self.title.parameterize
+    self.slug
   end
 end

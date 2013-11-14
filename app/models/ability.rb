@@ -42,7 +42,9 @@ class Ability
       can :create_public, Wiki
       can :create_private, Wiki
       can :create, Wiki
+      can :read, Wiki, :user_id => user.id
       can :read, Wiki.visible_to(user) do |w| !w.collaborators.empty? end
+      can :update, Wiki, :user_id => user.id
       can :update, Wiki.visible_to(user) do |w| !w.collaborators.empty? end
       can :destroy, Wiki, :user_id => user.id
     elsif user.role? :member

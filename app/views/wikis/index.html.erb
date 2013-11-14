@@ -7,7 +7,10 @@
   <% @wikis.each do |wiki| %>
     <tr>
       <td><%= link_to wiki.title, wiki %></td>
-      <td><small><%= wiki.description %></small></td>
+      <td><%= wiki.public ? "public" : "private" %>
+      <% if can? :update, @wiki %>
+        <td> <%= link_to "edit", edit_wiki_path(wiki), class: 'button' %> </td>
+      <% end %>
     </tr>
   <% end %>
  </table> 
