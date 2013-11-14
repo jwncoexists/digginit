@@ -22,6 +22,7 @@ gem 'faker'
 gem 'protected_attributes'
 gem 'cancan'
 gem 'redcarpet'
+gem 'marked-rails'
 # Use CoffeeScript for .js.coffee assets and views
 
 
