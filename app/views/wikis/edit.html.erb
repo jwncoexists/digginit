@@ -1,45 +1,44 @@
-<div class="container">
-  <div class="sixteen columns clearfix">
-    <div class="eight columns alpha">
-      <h1>edit wiki:</h1>
-    </div>
-    <div class="eight columns omega">
-      <h1>wiki preview:</h1><br>
-    </div>
+
+<div class="sixteen columns clearfix">
+  <div class="eight columns alpha">
+    <h1>edit wiki:</h1>
+  </div>
+  <div class="eight columns omega">
+    <h1>wiki preview:</h1><br>
   </div>
 </div>
-<div class="container">
-  <div class="sixteen columns clearfix">
-    <div class="eight columns alpha">
-      <%= form_for @wiki, html: { class: 'form-horizontal' } do |f| %>
-        <div class="control-group">
-          <%= f.label :title, class: 'control-label' %>
-          <div class="controls">
-            <%= f.text_field :title , id: 'js-wikititle'%>
-          </div>
-        </div>
-        <div class="control-group">
-          <%= f.label :body, class: 'control-label' %>
-          <div class="controls">
-            <%= f.text_area :body, id: 'js-wikibody', rows: 8 %>
-          </div>
-        </div>
 
-        <% if can? :create_private, Wiki %>
-          <div class="control-group">
-            <div class="controls">
-              <%= f.label :private, class: 'checkbox' do %>
-                <%= f.check_box :private, :checked => !@wiki.public %>make this a private wiki<br><br>
-              <% end %>
-            </div>
-          </div>
-        <% end %>
+<div class="sixteen columns clearfix">
+  <div class="eight columns alpha">
+    <%= form_for @wiki, html: { class: 'form-horizontal' } do |f| %>
+      <div class="control-group">
+        <%= f.label :title, class: 'control-label' %>
+        <div class="controls">
+          <%= f.text_field :title , id: 'js-wikititle'%>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :body, class: 'control-label' %>
+        <div class="controls">
+          <%= f.text_area :body, id: 'js-wikibody', rows: 8 %>
+        </div>
+      </div>
+
+      <% if can? :create_private, Wiki %>
         <div class="control-group">
           <div class="controls">
-            <%= f.submit "Save", class: 'btn' %>
+            <%= f.label :private, class: 'checkbox' do %>
+              <%= f.check_box :private, :checked => !@wiki.public %>make this private wiki<br><br>
+            <% end %>
           </div>
         </div>
-      <% end %>  
+      <% end %>
+      <div class="control-group">
+        <div class="controls">
+          <%= f.submit "Save", class: 'btn' %>
+        </div>
+      </div>
+    <% end %>  
     </div>
 
     <div class="eight columns omega">
