@@ -23,6 +23,7 @@ gem 'protected_attributes'
 gem 'cancan'
 gem 'redcarpet'
 gem 'marked-rails'
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 # Use CoffeeScript for .js.coffee assets and views
 
 
