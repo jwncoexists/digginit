@@ -1,5 +1,13 @@
-<h1>edit wiki</h1>
-
+<div class="container">
+  <div class="sixteen columns clearfix">
+    <div class="eight columns alpha">
+      <h1>edit wiki:</h1>
+    </div>
+    <div class="eight columns omega">
+      <h1>wiki preview:</h1><br>
+    </div>
+  </div>
+</div>
 <div class="container">
   <div class="sixteen columns clearfix">
     <div class="eight columns alpha">
@@ -7,7 +15,7 @@
         <div class="control-group">
           <%= f.label :title, class: 'control-label' %>
           <div class="controls">
-            <%= f.text_field :title %>
+            <%= f.text_field :title , id: 'js-wikititle'%>
           </div>
         </div>
         <div class="control-group">
@@ -35,10 +43,12 @@
     </div>
 
     <div class="eight columns omega">
-      <%= form_tag "Wiki Preview" do %>
-        <%= label_tag 'wiki Body Preview:' %>
-        <%= text_area_tag "Wiki Preview:", @wiki.body, id: 'js-wikimarkdown', readonly: true %>
-      <% end %>
+      <div class="js-titlepreview">
+        <h3><%= "#{@wiki.title}"%></h3>
+      </div>
+      <div class="js-wikipreview">
+        <p><%= markdown @wiki.body %></p>
+      </div>
     </div>
   </div>
 </div>

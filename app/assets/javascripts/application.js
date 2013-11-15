@@ -16,11 +16,17 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require marked
 //= require_tree .
 $(document).ready(function() {
+  $('#js-wikititle').bind('input propertychange', function() {
+    var mdtitle = "<h3>"+marked($(this).val())+"</h3>";
+    ($('.js-titlepreview').html(mdtitle));
+    return false;
+  });
   $('#js-wikibody').bind('input propertychange', function() {
-    var mdtxt = $(this).value;
-    $('#js-wikimarkdown').value - mdtxt;
+    var mdtxt = "<p>"+marked($(this).val())+"</p>";
+    ($('.js-wikipreview').html(mdtxt));
     return false;
   });
 });
