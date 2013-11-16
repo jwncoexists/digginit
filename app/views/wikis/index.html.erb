@@ -1,4 +1,4 @@
-<h1>my wikis</h1>
+<h1><%= "#{current_user.name}'s wikis" %></h1>
 <% if can? :create, Wiki %>
   <%= link_to "create new wiki", new_wiki_path, class: 'button' %>
 <% end %>
