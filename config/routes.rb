@@ -11,8 +11,10 @@ Digginit::Application.routes.draw do
   
   resources :users
   resources :email_confirmations
-  resources :wikis
-  resources :collaborators
+  resources :wikis do
+    resources :collaborators, controller: 'wikis/collaborators' 
+  end
+
 
   root to: 'welcome#index'
   match "about" => 'welcome#about', via: :get 
