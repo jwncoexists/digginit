@@ -11,6 +11,7 @@ Digginit::Application.routes.draw do
   
   resources :users
   resources :email_confirmations
+  resources :charges
   resources :wikis do
     resources :collaborators, controller: 'wikis/collaborators' 
   end

@@ -5,7 +5,7 @@
       <tr>
         <td>
         <div class="control-group">
-          <%= check_box_tag "wiki[collaborator_ids][]", user.id, @wiki.collaborators.include?.(user.id) %>
+          <%= check_box_tag "wiki[collaborator_ids][]", user.id, @wiki.collaborator.include?.(user.id) %>
         </div> </td>
         <td>
         <div class="control-group">

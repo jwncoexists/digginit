@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131114141543) do
+ActiveRecord::Schema.define(version: 20131117055305) do
 
   create_table "collaborators", force: true do |t|
     t.integer  "wiki_id"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20131114141543) do
   end
 
   add_index "collaborators", ["user_id"], name: "index_collaborators_on_user_id", using: :btree
+  add_index "collaborators", ["wiki_id", "user_id"], name: "index_collaborators_on_wiki_id_and_user_id", using: :btree
   add_index "collaborators", ["wiki_id"], name: "index_collaborators_on_wiki_id", using: :btree
 
   create_table "users", force: true do |t|
