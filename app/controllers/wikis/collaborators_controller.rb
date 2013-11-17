@@ -6,7 +6,8 @@ class CollaboratorsController < ApplicationController
 
   def show
     @collaborator = Collaborator.find(params[:id])
-    @wiki = Wiki.find_by_slug(params[:wiki_id])
+    # @wiki = Wiki.find_by_slug(params[:wiki_id])
+    @wiki = Wiki.find(params[:wiki_id])
   end
 
   def new
@@ -15,7 +16,8 @@ class CollaboratorsController < ApplicationController
   end
 
   def create
-    @wiki = Wiki.find_by_slug(params[:wiki_id])
+    # @wiki = Wiki.find_by_slug(params[:wiki_id])
+    @wiki = Wiki.find(params[:wiki_id])
     @collaborator = Collaborator.new(params[:collaborator])
     @collaborator.wiki_id = @wiki.id
     @collaborator.user_id = current_user.id

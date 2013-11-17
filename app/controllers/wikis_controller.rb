@@ -11,13 +11,15 @@ class WikisController < ApplicationController
   end
 
   def show
-    @wiki = Wiki.find_by_slug(params[:id])
+    # @wiki = Wiki.find_by_slug(params[:id])
+    @wiki = Wiki.find(params[:id])
     current_user.cur_wiki = @wiki.id
     current_user.save
   end
 
   def edit
-    @wiki = Wiki.find_by_slug(params[:id])
+    # @wiki = Wiki.find_by_slug(params[:id])
+    @wiki = Wiki.find(params[:id])
     authorize! :update, @wiki, message: "You don't have access to edit this wiki."
   end
 
@@ -36,7 +38,8 @@ class WikisController < ApplicationController
   end
 
    def update
-     @wiki = Wiki.find_by_slug(params[:id])
+     # @wiki = Wiki.find_by_slug(params[:id])
+     @wiki = Wiki.find(params[:id])
      authorize! :update, @wiki, message: "You don't have access to this wiki to update it."
      if @wiki.update_attributes(params[:wiki])
        redirect_to @wiki
@@ -47,7 +50,8 @@ class WikisController < ApplicationController
    end
 
   def destroy
-    @wiki = Wiki.find_by_slug(params[:id])
+    # @wiki = Wiki.find_by_slug(params[:id])
+    @wiki = Wiki.find(params[:id])
     title = @wiki.title
     authorize! :destroy, @wiki, message: "You don't have acccess to delete this wiki."
     if @wiki.destroy
