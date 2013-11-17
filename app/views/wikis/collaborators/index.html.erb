@@ -1,2 +1,28 @@
-<h1>Collaborators#index</h1>
-<p>Find me in app/views/collaborators/index.html.erb</p>
+<h1><%= "#{@wiki.title} Collaborators" %></h1>
+<%= form_tag do %>
+  <table>
+    <% @users.each do |user| %>
+      <tr>
+        <td>
+        <div class="control-group">
+          <%= check_box_tag "wiki[collaborator_ids][]", user.id, @wiki.collaborators.include?.(user.id) %>
+        </div> </td>
+        <td>
+        <div class="control-group">
+          <%= label_tag user.name %>
+        </div></td>
+        <td>
+        <div class="control-group">
+          <%= label_tag user.email %>
+        </div></td>
+      </tr>
+    <% end %>
+  </table>
+
+  <div class="control-group">
+    <div class="controls">
+      <%= submit_tag "Save", class: 'btn' %>
+    </div>
+  </div>
+<% end %>
+
