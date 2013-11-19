@@ -1,5 +1,4 @@
 <div>
-
   <%= form_for(@user) do |f| %>
     <% if @user.errors.any? %>
       <div id="error_explanation">
@@ -33,5 +32,6 @@
       <div class="actions">
         <%= f.submit %>
       </div>
-    <% end %>
+    </fieldset>
+  <% end %>
 </div>

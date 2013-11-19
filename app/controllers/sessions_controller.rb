@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
         render :new
       elsif user.authenticate(params[:password])
         session[:user_id] = user.id
-        redirect_to Wiki.find(user.cur_wiki), notice: "You are signed in to digginIt."
+        redirect_to wikis_path notice: "You are signed in to digginIt."
       else
         flash[:alert] =  "Invalid user/password combination."
         render :new

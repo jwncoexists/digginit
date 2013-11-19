@@ -1,17 +1,12 @@
 class User < ActiveRecord::Base
 
-  attr_accessible :name, :email, :password, :password_confirmation, :confirmed_at, :role
+  attr_accessible :name, :email, :password, :password_confirmation, :confirmed_at, :account
   has_secure_password
   has_many :collaborators
-  after_create :set_cur_wiki_to_digginit
 
-  def set_cur_wiki_to_digginit
-    self.update_attribute(:cur_wiki, Wiki.find_by_title('digginIt').id)
-  end
-
-  ROLES = %w[member premium admin]
-  def role?(base_role)
-    role.nil? ? false : ROLES.index(base_role.to_s) <= ROLES.index(role)
+  ACCOUNTS = %w[member premium admin]
+  def account?(base_account)
+    account.nil? ? false : ACCOUNTS.index(base_account.to_s) <= ACCOUNTS.index(account)
   end  
 
 end

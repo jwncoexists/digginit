@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131117055305) do
+ActiveRecord::Schema.define(version: 20131117214831) do
 
   create_table "collaborators", force: true do |t|
     t.integer  "wiki_id"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20131117055305) do
     t.string   "name",                               null: false
     t.string   "password_digest", default: "",       null: false
     t.string   "email",           default: "",       null: false
-    t.string   "role",            default: "member"
+    t.string   "account",         default: "member"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "token"
