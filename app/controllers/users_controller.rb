@@ -33,10 +33,9 @@ class UsersController < ApplicationController
       @user.update_attribute(:token, SecureRandom.hex(6))
       RegistrationMailer.registration_confirmation(@user, new_email_confirmation_url(token: @user.token)).deliver
       if( @account == "premium")
-        redirect_to root_path, notice: "An email has been sent to your account. Please click the link in the email to verify address and complete your registration."
-      else
-        flash[:notice] = "An email has been sent to your account. Please click the link in the email to verify address and complete your registration."
         redirect_to new_charge_path :user, @user
+      else
+        redirect_to root_path, notice: "An email has been sent to your account. Please click the link in the email to verify address and complete your registration."
       end
     else
       flash[:error] = "Error creating new user. Please try again."
