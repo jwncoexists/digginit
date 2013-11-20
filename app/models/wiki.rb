@@ -1,11 +1,12 @@
 class Wiki < ActiveRecord::Base
-  attr_accessible :title, :body, :public, :user_id
+  attr_accessible :title, :body, :public, :user_id, :user_ids
   before_save :update_slug
 
   validates :title, length: { minimum: 5 }, presence: true
   validates :body, length: { minimum: 20 }, presence: true
 
-  has_and_belongs_to_many :collaborators
+  has_many :collaborations
+  has_many :users, :through => :collaborations
 
   default_scope order('title ASC')
   # scope :visible_to, lambda { |user| user.role == 'admin' ? scoped : Wiki.includes(:collaborators).where("wikis.public = true OR wikis.user_id = ? OR collaborators.user_id = ?", user.id, user.id) }

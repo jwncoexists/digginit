@@ -26,7 +26,7 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
-    @user.account = @account
+    @user.account = @account2
 
     if @user.save
       @user.update_attribute(:token, SecureRandom.hex(6))
@@ -40,6 +40,7 @@ class UsersController < ApplicationController
       flash[:error] = "Error creating new user. Please try again."
       render :new
     end
+
   end
 
   # PATCH/PUT /users/1

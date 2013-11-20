@@ -1,5 +1,6 @@
 Digginit::Application.routes.draw do
 
+  get "collaborations/index"
   controller :sessions do
     get 'login' => :new
     post 'login' => :create
@@ -13,7 +14,7 @@ Digginit::Application.routes.draw do
   resources :email_confirmations
   resources :charges
   resources :wikis do
-    resources :collaborators, controller: 'wikis/collaborators' 
+    resources :collaborations, controller: 'wikis/collaborations' 
   end
 
 

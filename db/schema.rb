@@ -11,19 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131117214831) do
+ActiveRecord::Schema.define(version: 20131120055458) do
 
-  create_table "collaborators", force: true do |t|
+  create_table "collaborations", force: true do |t|
     t.integer  "wiki_id"
     t.integer  "user_id"
-    t.string   "wiki_role"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "collaborators", ["user_id"], name: "index_collaborators_on_user_id", using: :btree
-  add_index "collaborators", ["wiki_id", "user_id"], name: "index_collaborators_on_wiki_id_and_user_id", using: :btree
-  add_index "collaborators", ["wiki_id"], name: "index_collaborators_on_wiki_id", using: :btree
+  add_index "collaborations", ["user_id"], name: "index_collaborations_on_user_id", using: :btree
+  add_index "collaborations", ["wiki_id"], name: "index_collaborations_on_wiki_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "name",                               null: false
@@ -52,7 +50,7 @@ ActiveRecord::Schema.define(version: 20131117214831) do
 
   add_index "wikis", ["user_id"], name: "index_wikis_on_user_id", using: :btree
 
-  add_foreign_key "collaborators", "users", name: "collaborators_user_id_fk", dependent: :delete
-  add_foreign_key "collaborators", "wikis", name: "collaborators_wiki_id_fk", dependent: :delete
+  add_foreign_key "collaborations", "users", name: "collaborations_user_id_fk", dependent: :delete
+  add_foreign_key "collaborations", "wikis", name: "collaborations_wiki_id_fk", dependent: :delete
 
 end

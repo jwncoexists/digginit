@@ -1,11 +1,11 @@
 <h1><%= "#{@wiki.title} Collaborators" %></h1>
-<%= form_tag do %>
+<%= form_for @wiki do %>
   <table>
     <% @users.each do |user| %>
       <tr>
         <td>
         <div class="control-group">
-          <%= check_box_tag "wiki[collaborator_ids][]", user.id, @wiki.collaborator.include?.(user.id) %>
+          <%= check_box_tag :user_ids, user.id, @wiki.users.include?(user), :name => 'wiki[user_ids][]' %>
         </div> </td>
         <td>
         <div class="control-group">
@@ -25,4 +25,3 @@
     </div>
   </div>
 <% end %>
-

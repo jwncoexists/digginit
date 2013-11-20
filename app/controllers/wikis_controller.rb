@@ -40,6 +40,8 @@ class WikisController < ApplicationController
    def update
      # @wiki = Wiki.find_by_slug(params[:id])
      @wiki = Wiki.find(params[:id])
+     # merge default value with params so if no collaborators checked, will erase
+     @wiki.attributes = {'user_ids' => []}.merge(params[:wiki] || {})
      authorize! :update, @wiki, message: "You don't have access to this wiki to update it."
      if @wiki.update_attributes(params[:wiki])
        redirect_to @wiki
