@@ -21,6 +21,7 @@
               <li><%= link_to "about", about_path %></li>
               <% if current_user %>
                 <li><%= link_to "my wikis", wikis_path %></li>
+                <li><%= link_to "my account", user_path(current_user) %></li>
               <% end %>
               <% if current_user %>
                 <li><%= link_to "sign-out", logout_path, method: :delete %></li>

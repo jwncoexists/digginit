@@ -9,9 +9,9 @@ class Wiki < ActiveRecord::Base
   has_many :users, :through => :collaborations
 
   default_scope order('title ASC')
-  # scope :visible_to, lambda { |user| user.role == 'admin' ? scoped : Wiki.includes(:collaborators).where("wikis.public = true OR wikis.user_id = ? OR collaborators.user_id = ?", user.id, user.id) }
+  scope :visible_to, lambda { |user| user.account == 'admin' ? scoped : Wiki.includes(:collaborations).where("wikis.public = true OR wikis.user_id = ? OR collaborations.user_id = ?", user.id, user.id) }
   # scope :visible_to, lambda { |user| user.role == 'admin' ? scoped : joins(:collaborators).where("wikis.public = true OR wikis.user_id = ? OR wikis.collaborators.user_id = ?", user.id, user.id) }
-  scope :visible_to, lambda { |user| user.account == 'admin' ? scoped : Wiki.where('public=true OR user_id = ?', user.id)}
+  # scope :visible_to, lambda { |user| user.account == 'admin' ? scoped : Wiki.where('public=true OR user_id = ?', user.id)}
 
   def update_slug
     self.slug = self.title.parameterize

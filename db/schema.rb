@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131120055458) do
+ActiveRecord::Schema.define(version: 20131120130935) do
 
   create_table "collaborations", force: true do |t|
     t.integer  "wiki_id"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20131120055458) do
     t.string   "token"
     t.date     "confirmed_at"
     t.integer  "cur_wiki"
+    t.string   "slug"
   end
 
   add_index "users", ["confirmed_at"], name: "index_users_on_confirmed_at", using: :btree

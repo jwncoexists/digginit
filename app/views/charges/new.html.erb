@@ -1,13 +1,15 @@
-<h3>Premium Account payment info</h2>
-<%= form_tag charges_path do %>
-  <fieldset> 
-    <label class="amount">
-      <span>Amount to be charged to credit card: $5.00</span>
-    </label>
-  </fieldset>
+<div class = "eight columns">
+  <h3>Premium Account payment info</h2>
+  <%= form_tag charges_path do %>
+    <fieldset> 
+      <label class="amount">
+        <span><strong>Amount to be charged to credit card: $5.00</span></strong>
+      </label>
+    </fieldset>
 
-  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-description="One month's subscription to digginIt"
-          data-amount="500"></script>
-<% end %>
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+            data-description="Subscription to digginIt"
+            data-amount="500"></script>
+  <% end %>
+</div>
