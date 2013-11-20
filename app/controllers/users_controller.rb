@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
-    set_account
+    @account = params[:account]
   end
 
   # GET /users/1/edit
@@ -27,12 +27,11 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
-    @user.account = @account2
 
     if @user.save
       @user.update_attribute(:token, SecureRandom.hex(6))
       RegistrationMailer.registration_confirmation(@user, new_email_confirmation_url(token: @user.token)).deliver
-      if( @account == "premium")
+      if( @user.account == "premium")
         redirect_to new_charge_path :user, @user
       else
         redirect_to root_path, notice: "An email has been sent to your account. Please click the link in the email to verify address and complete your registration."
@@ -68,11 +67,6 @@ class UsersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find_by_slug(params[:id])
-    end
-
-    def set_account
-      @account = params[:account]
-      @user.account = @account
     end
 
     # Never trust parameters from the internet, only allow the white list through.
