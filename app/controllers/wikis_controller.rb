@@ -11,15 +11,16 @@ class WikisController < ApplicationController
   end
 
   def show
-    # @wiki = Wiki.find_by_slug(params[:id])
-    @wiki = Wiki.find(params[:id])
+    @wiki = Wiki.find_by_slug(params[:id])
+    @author = User.find(@wiki.user_id)
+    # @wiki = Wiki.find(params[:id])
     current_user.cur_wiki = @wiki.id
     current_user.save
   end
 
   def edit
-    # @wiki = Wiki.find_by_slug(params[:id])
-    @wiki = Wiki.find(params[:id])
+    @wiki = Wiki.find_by_slug(params[:id])
+    # @wiki = Wiki.find(params[:id])
     authorize! :update, @wiki, message: "You don't have access to edit this wiki."
   end
 
@@ -38,8 +39,8 @@ class WikisController < ApplicationController
   end
 
    def update
-     # @wiki = Wiki.find_by_slug(params[:id])
-     @wiki = Wiki.find(params[:id])
+     @wiki = Wiki.find_by_slug(params[:id])
+     # @wiki = Wiki.find(params[:id])
      # merge default value with params so if no collaborators checked, will erase
      @wiki.attributes = {'user_ids' => []}.merge(params[:wiki] || {})
      authorize! :update, @wiki, message: "You don't have access to this wiki to update it."
@@ -52,8 +53,8 @@ class WikisController < ApplicationController
    end
 
   def destroy
-    # @wiki = Wiki.find_by_slug(params[:id])
-    @wiki = Wiki.find(params[:id])
+    @wiki = Wiki.find_by_slug(params[:id])
+    # @wiki = Wiki.find(params[:id])
     title = @wiki.title
     authorize! :destroy, @wiki, message: "You don't have acccess to delete this wiki."
     if @wiki.destroy

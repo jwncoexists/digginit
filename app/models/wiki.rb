@@ -18,7 +18,7 @@ class Wiki < ActiveRecord::Base
   end
 
   def to_param
-    # self.slug
-    self.id
+    self.slug
+    # self.id
   end
 end
